@@ -18,6 +18,7 @@
 ## Описание библиотеки:
 Данная библиотека может использовать как аппаратную, так и программную реализацию шины I2C.  
 О том как выбрать тип шины I2C рассказано в статье [Wiki - расширенные возможности библиотек iarduino для шины I2C](https://wiki.iarduino.ru/page/i2c_connection/).
+
 **[  Подробное описание, подключение и примеры работы ](https://wiki.iarduino.ru/page/trema-modul-pressure-meter)**
 
 ## Назначение функций и переменных:
@@ -73,5 +74,5 @@
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNTMzNjU2MTFdfQ==
+eyJoaXN0b3J5IjpbLTEzNjk3NzY1MDldfQ==
 -->
