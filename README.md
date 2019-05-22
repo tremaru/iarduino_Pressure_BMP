@@ -2,13 +2,13 @@
 [![](https://iarduino.ru/img/logo.svg)](https://iarduino.ru)[![](https://wiki.iarduino.ru/img/git-shop.svg?3)](https://iarduino.ru) [![](https://wiki.iarduino.ru/img/git-wiki.svg?2)](https://wiki.iarduino.ru) [![](https://wiki.iarduino.ru/img/git-lesson.svg?2)](https://lesson.iarduino.ru)[![](https://wiki.iarduino.ru/img/git-forum.svg?2)](http://forum.trema.ru)
 
 # iarduino_Pressure_BMP [СКАЧАТЬ](https://github.com/tremaru/iarduino_Pressure_BMP/archive/master.zip)
-Библиотека iarduino_4LED для работы с четырёхразрядным индикатором
+Библиотека iarduino_Pressure_BMP позволяет считывать температуру окружающей среды и атмосферное давление с датчиков [BMP180](http://iarduino.ru/shop/Sensory-Datchiki/barometr-gy-68-datchik-atmosfernogo-davleniya-bmp180.html) и [BMP280](http://iarduino.ru/shop/Sensory-Datchiki/barometr-trema-modul.html), а так же рассчитывать высоту.
 
 > Подробнее про установку библиотеки читайте в нашей [инструкции](https://wiki.iarduino.ru/page/Installing_libraries/).
 
 Пример подключения к [Arduino](https://iarduino.ru/shop/boards/arduino-uno-r3.html)/[Piranha UNO](https://iarduino.ru/shop/boards/piranha-uno-r3.html) с помощью [Trema Shield](https://iarduino.ru/shop/Expansion-payments/trema-shield.html)
-Подробнее о [подключении модуля](https://wiki.iarduino.ru/page/chetyrehrazryadnyy-indikator-trema-modul/#h3_4) 
-![enter image description here](https://iarduino.ru/img/upload/6d5483e9fe8088a704239c91a4a8fcb1.png)
+Подробнее о [подключении модуля](https://wiki.iarduino.ru/page/trema-modul-pressure-meter) 
+![enter image description here](https://iarduino.ru/img/upload/ff71929a63d941fd58dc5a60860d0671.png)
 
 | Модель | Ссылка на магазин|
 |--|--|
@@ -56,5 +56,5 @@
 
     Функция setLED( [[[[[ БАЙТ_№1 ] , БАЙТ_№2 ] , БАЙТ_№3 ] , БАЙТ_№4 ] , ФЛАГ ] ); // Устанавливает светодиоды (сегменты) индикатора по битам.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzQzMzM0NjQ0XX0=
+eyJoaXN0b3J5IjpbOTQwMDA3OTY1XX0=
 -->
