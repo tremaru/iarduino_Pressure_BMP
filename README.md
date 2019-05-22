@@ -12,12 +12,13 @@
 
 | Модель | Ссылка на магазин|
 |--|--|
-| Красная ![enter image description here](https://wiki.iarduino.ru/img/resources/840/840.svg) | https://iarduino.ru/shop/Displei/chetyrehrazryadnyy-indikator-led-trema-modul.html|
-| BMP180 ![enter image description here](https://wiki.iarduino.ru/img/resources/840/840.svg) | https://iarduino.ru/shop/Displei/chetyrehrazryadnyy-indikator-led-zelenyy-trema-modul.html |
+| BMP280 ![enter image description here](https://wiki.iarduino.ru/img/resources/840/840.svg) | https://iarduino.ru/shop/Sensory-Datchiki/barometr-trema-modul.html|
+| BMP180 ![enter image description here](https://wiki.iarduino.ru/img/resources/840/840.svg) | https://iarduino.ru/shop/Sensory-Datchiki/barometr-gy-68-datchik-atmosfernogo-davleniya-bmp180.html |
 
 ## Описание библиотеки:
-Библиотека позволяет регулировать яркость свечения LED индикатора, выводить на него числа (целые, дробные, положительные, отрицательные), символы ("abcdefghijlnopstu .,:;*-_"), массивы чисел, время и температуру.
-**[  Подробное описание, подключение и примеры работы ](https://wiki.iarduino.ru/page/chetyrehrazryadnyy-indikator-trema-modul/)**
+Данная библиотека может использовать как аппаратную, так и программную реализацию шины I2C.  
+О том как выбрать тип шины I2C рассказано в статье [Wiki - расширенные возможности библиотек iarduino для шины I2C](https://wiki.iarduino.ru/page/i2c_connection/).
+**[  Подробное описание, подключение и примеры работы ](https://wiki.iarduino.ru/page/trema-modul-pressure-meter)**
 
 ## Назначение функций и переменных:
 Подробное описание работы с библиотекой, находится в разделе [Wiki Четырёхразрядный индикатор](https://wiki.iarduino.ru/page/chetyrehrazryadnyy-indikator-trema-modul/ "Wiki Четырёхразрядный индикатор").
@@ -54,5 +55,5 @@
 
     Функция setLED( [[[[[ БАЙТ_№1 ] , БАЙТ_№2 ] , БАЙТ_№3 ] , БАЙТ_№4 ] , ФЛАГ ] ); // Устанавливает светодиоды (сегменты) индикатора по битам.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMyMzU4NDIxMl19
+eyJoaXN0b3J5IjpbODU2OTIzNzU4XX0=
 -->
