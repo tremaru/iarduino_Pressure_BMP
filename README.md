@@ -12,10 +12,8 @@
 
 | Модель | Ссылка на магазин|
 |--|--|
-| Красная ![enter image description here](https://wiki.iarduino.ru/img/resources/702/702.svg) | https://iarduino.ru/shop/Displei/chetyrehrazryadnyy-indikator-led-trema-modul.html|
-| Зеленый![enter image description here](https://wiki.iarduino.ru/img/resources/883/883.svg) | https://iarduino.ru/shop/Displei/chetyrehrazryadnyy-indikator-led-zelenyy-trema-modul.html |
-| Синий ![enter image description here](https://wiki.iarduino.ru/img/resources/884/884.svg) | https://iarduino.ru/shop/Displei/chetyrehrazryadnyy-indikator-led-siniy-trema-modul.html |
-
+| Красная ![enter image description here](https://wiki.iarduino.ru/img/resources/840/840.svg) | https://iarduino.ru/shop/Displei/chetyrehrazryadnyy-indikator-led-trema-modul.html|
+| BMP180 ![enter image description here](https://wiki.iarduino.ru/img/resources/840/840.svg) | https://iarduino.ru/shop/Displei/chetyrehrazryadnyy-indikator-led-zelenyy-trema-modul.html |
 
 ## Описание библиотеки:
 Библиотека позволяет регулировать яркость свечения LED индикатора, выводить на него числа (целые, дробные, положительные, отрицательные), символы ("abcdefghijlnopstu .,:;*-_"), массивы чисел, время и температуру.
@@ -56,5 +54,5 @@
 
     Функция setLED( [[[[[ БАЙТ_№1 ] , БАЙТ_№2 ] , БАЙТ_№3 ] , БАЙТ_№4 ] , ФЛАГ ] ); // Устанавливает светодиоды (сегменты) индикатора по битам.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTQwMDA3OTY1XX0=
+eyJoaXN0b3J5IjpbLTMyMzU4NDIxMl19
 -->
