@@ -1,11 +1,3 @@
----
-
-
----
-
-<p><a href="https://iarduino.ruhttps://iarduino.ru/img/logo.svg" alt=""></a><a href="https://iarduino.ru"><img src="https://wiki.iarduino.ru/img/git-shop.svg?3" alt=""></a> <a href="https://.iarduino.ru"><img src="https://wiki.iarduino.ru/img/git-wiki.svg?2" alt=""></a> <a href="http://no.ru"><img src=") [![](https://wiki.iarduino.ru/img/git-lesson.svg?2" alt=""></a><a href="https://forum.trema.ru"><img src="lesson.iarduino.ruhttps://wiki.iarduino.ru/img/git-forum.svg?2" alt=""></a></p>
-<h1 id="iarduino_pressure_bmp-">iarduino_Pressure_BMP <a href="http://forum.trema.ru"><img src="http://.iarduinoru//wiki.iarduino.ru/img/git-load.svg?4" alt=""></a></h1>
-<p>)](http://forum.trema.ru)
 
 
 
@@ -88,5 +80,5 @@
 </code></pre>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MzYyMzYzNTZdfQ==
+eyJoaXN0b3J5IjpbLTQ1MDE3NjgxMCwtMTgzNjIzNjM1Nl19
 -->
