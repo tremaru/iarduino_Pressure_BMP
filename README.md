@@ -1,7 +1,10 @@
 
 [![](https://iarduino.ru/img/logo.svg)](https://iarduino.ru)[![](https://wiki.iarduino.ru/img/git-shop.svg?3)](https://iarduino.ru) [![](https://wiki.iarduino.ru/img/git-wiki.svg?2)](https://wiki.iarduino.ru) [![](https://wiki.iarduino.ru/img/git-lesson.svg?2)](https://lesson.iarduino.ru)[![](https://wiki.iarduino.ru/img/git-forum.svg?2)](http://forum.trema.ru)
 
-# iarduino_Pressure_BMP [СКАЧАТЬ](https://github.com/tremaru/iarduino_Pressure_BMP/archive/master.zip)
+# iarduino_Pressure_BMP [![](https://wiki.iarduino.ru/img/git-load.svg?4)](http://forum.trema.ru)
+
+
+
 Библиотека iarduino_Pressure_BMP позволяет считывать температуру окружающей среды и атмосферное давление с датчиков [BMP180](http://iarduino.ru/shop/Sensory-Datchiki/barometr-gy-68-datchik-atmosfernogo-davleniya-bmp180.html) и [BMP280](http://iarduino.ru/shop/Sensory-Datchiki/barometr-trema-modul.html), а так же рассчитывать высоту.
 
 > Подробнее про установку библиотеки читайте в нашей [инструкции](https://wiki.iarduino.ru/page/Installing_libraries/).
@@ -74,5 +77,5 @@
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNjk3NzY1MDldfQ==
+eyJoaXN0b3J5IjpbMTM5MTYzNDI5LC0xMzY5Nzc2NTA5XX0=
 -->
