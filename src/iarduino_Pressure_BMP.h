@@ -1,5 +1,5 @@
 //	Библиотека для работы с датчиками атмосферного давления и температуры BMP180 и(или) BMP280. http://iarduino.ru/shop/Sensory-Datchiki/davleniya/
-//  Версия: 2.0.1
+//  Версия: 2.0.3
 //  Последнюю версию библиотеки Вы можете скачать по ссылке: http://iarduino.ru/file/227.html
 //  Подробное описание функции бибилиотеки доступно по ссылке: http://wiki.iarduino.ru/page/trema-modul-pressure-meter
 //  Библиотека является собственностью интернет магазина iarduino.ru и может свободно использоваться и распространяться!
@@ -17,7 +17,14 @@
 #include <WProgram.h>															//
 #endif																			//
 																				//
-#include <iarduino_Pressure_BMP_I2C.h>											//	Подключаем файл iarduino_Pressure_BMP_I2C.h - для работы с шиной I2C        (используя функции производного класса iarduino_I2C)
+#include	"iarduino_Pressure_BMP_I2C.h"										//	Подключаем библиотеку выбора реализации шины I2C.
+																				//
+#if defined(TwoWire_h) || defined(__ARDUINO_WIRE_IMPLEMENTATION__) || defined(__AVR_ATmega328__) || defined(__AVR_ATmega32U4__) || defined(__AVR_ATmega1284P__) || defined(__AVR_ATmega2560__) || defined(ESP8266) || defined(ESP32) || defined(ARDUINO_ARCH_RP2040) || defined(RENESAS_CORTEX_M4) // Если подключена библиотека Wire или платы её поддерживают...
+#include	<Wire.h>															//	Разрешаем использовать библиотеку Wire в данной библиотеке.
+#endif																			//
+#if defined( iarduino_I2C_Software_h )											//	Если библиотека iarduino_I2C_Software подключена в скетче...
+#include	<iarduino_I2C_Software.h>											//	Разрешаем использовать библиотеку iarduino_I2C_Software в данной библиотеке.
+#endif																			//
 																				//
 //		Идентификаторы чипов:													//
 		#define BMP280_ID					0x58 // 0x58						//	Идентификатор чипа BMP280, содержится в регистре BMPXXX_ADDRR_ID.
@@ -62,11 +69,19 @@
 class iarduino_Pressure_BMP{													//
 	public:																		//
 	/**	Конструктор класса **/													//
-		iarduino_Pressure_BMP				(uint8_t i=0x77){objI2C = new iarduino_I2C; valAddress=i;}	//											(аргументы: адрес датчика на шине I2C)
+		iarduino_Pressure_BMP				(uint8_t i=0x77){selI2C = new iarduino_I2C_Select; valAddress=i;} //									(Параметры: адрес датчика на шине I2C)
 	/**	пользовательские функции **/											//
-		bool		begin					(float=0);							//	Объявляем  функцию инициализации датчика						(аргументы: текущая высота)
-		bool		measurement				(uint8_t);							//	Объявляем  функцию установки точности							(аргументы: степень передискретизации - точность) // значение от 0-минимальная до 3 (для bmp180) или до 4 (для bmp280) включительно
-		bool		read					(uint8_t=1);						//	Объявляем  функцию чтения всех данных сенсора					(аргументы: цифра 1 или 2) // 1 - получить давление в мм.рт.ст., 2 - получить давление в Па
+		#if defined(TwoWire_h) || defined(__ARDUINO_WIRE_IMPLEMENTATION__)		//
+		bool		begin					(void                         ){ selI2C->begin(&Wire); return _begin(  0.0f  ); } //	Инициализация	(Параметры: нет).
+		bool		begin					(                int   h      ){ selI2C->begin(&Wire); return _begin((float)h); } //	Инициализация	(Параметр:  текущая высота).
+		bool		begin					(                float h      ){ selI2C->begin(&Wire); return _begin(   h    ); } //	Инициализация	(Параметр:  текущая высота).
+		bool		begin					(TwoWire*     i, float h=0.0f ){ selI2C->begin(  i  ); return _begin(   h    ); } //	Инициализация	(Параметры: объект для работы с аппаратной шиной I2C, текущая высота).
+		#endif																	//
+		#if defined(iarduino_I2C_Software_h)									//
+		bool		begin					(SoftTwoWire* i, float h=0.0f ){ selI2C->begin(  i  ); return _begin(   h    ); } //	Инициализация	(Параметры: объект для работы с программной шиной I2C, текущая высота).
+		#endif																	//
+		bool		measurement				(uint8_t);							//	Объявляем  функцию установки точности							(Параметры: степень передискретизации - точность) // значение от 0-минимальная до 3 (для bmp180) или до 4 (для bmp280) включительно
+		bool		read					(uint8_t=1);						//	Объявляем  функцию чтения всех данных сенсора					(Параметры: цифра 1 или 2) // 1 - получить давление в мм.рт.ст., 2 - получить давление в Па
 	/**	пользовательские переменные **/											//
 		float		temperature;												//	Объявляем  переменную для хранения температуры					(°C)
 		float		pressure;													//	Объявляем  переменную для хранения давления						(мм.рт.ст. или Па)
@@ -75,9 +90,10 @@ class iarduino_Pressure_BMP{													//
 		int			version					= 0;								//	Определяем переменную для хранения версии датчика				()
 	private:																	//
 	/**	внутренние функции **/													//
-		uint32_t	readBytes				(uint8_t, uint8_t=1, bool=true);	//	Объявляем  функцию чтения регистров датчика в виде числа		(аргументы: адрес_регистра, количество_байт, чем_старше_регистр_тем_старше_байт)
+		bool		_begin					(float);							//	Объявляем  функцию инициализации датчика						(Параметры: текущая высота)
+		uint32_t	readBytes				(uint8_t, uint8_t=1, bool=true);	//	Объявляем  функцию чтения регистров датчика в виде числа		(Параметры: адрес_регистра, количество_байт, чем_старше_регистр_тем_старше_байт)
 	/**	внутренние переменные **/												//
-		iarduino_I2C_BASE*	objI2C;												//	Объявляем  указатель на объект полиморфного класса iarduino_I2C_BASE, но в конструкторе данного класса этому указателю будет присвоена ссылка на производный класс iarduino_I2C
+		iarduino_I2C_VirtualSelect*			selI2C;								//	Объявляем  указатель  на  объект полиморфного класса iarduino_I2C_VirtualSelect, но в конструкторе текущего класса этому указателю будет присвоена ссылка на производный класс iarduino_I2C_Select.
 		uint8_t		valAddress				= 0;								//	Определяем переменную для хранения адреса чипа на шине I2C		(0x77 для bmp180, или 0x76-0x77 для bmp280)
 		uint8_t		valID					= 0;								//	Определяем переменную для хранения Id чипа						(0x55 для bmp180, или 0x58 для bmp280)
 		uint8_t		valMeasurement			= 4;								//	Определяем переменную для хранения степени передискретизации	(от 0 до 3 или 4 включительно, в зависимости от датчика, bmp180 или bmp280)
