@@ -1,5 +1,5 @@
 //	Библиотека для работы с датчиками атмосферного давления и температуры BMP180 и(или) BMP280. http://iarduino.ru/shop/Sensory-Datchiki/davleniya/
-//  Версия: 2.0.4
+//  Версия: 2.0.5
 //  Последнюю версию библиотеки Вы можете скачать по ссылке: http://iarduino.ru/file/227.html
 //  Подробное описание функции бибилиотеки доступно по ссылке: http://wiki.iarduino.ru/page/trema-modul-pressure-meter
 //  Библиотека является собственностью интернет магазина iarduino.ru и может свободно использоваться и распространяться!
@@ -72,13 +72,13 @@ class iarduino_Pressure_BMP{													//
 		iarduino_Pressure_BMP				(uint8_t i=0x77){selI2C = new iarduino_I2C_Select; valAddress=i;} //									(Параметры: адрес датчика на шине I2C)
 	/**	пользовательские функции **/											//
 		#if defined(TwoWire_h) || defined(__ARDUINO_WIRE_IMPLEMENTATION__)		//
-		bool		begin					(void                         ){ selI2C->begin(&Wire); return _begin(  0.0f  ); } //	Инициализация	(Параметры: нет).
-		bool		begin					(                int   h      ){ selI2C->begin(&Wire); return _begin((float)h); } //	Инициализация	(Параметр:  текущая высота).
-		bool		begin					(                float h      ){ selI2C->begin(&Wire); return _begin(   h    ); } //	Инициализация	(Параметр:  текущая высота).
-		bool		begin					(TwoWire*     i, float h=0.0f ){ selI2C->begin(  i  ); return _begin(   h    ); } //	Инициализация	(Параметры: объект для работы с аппаратной шиной I2C, текущая высота).
+		bool		begin					(void                         ){ selI2C->init(&Wire); return _begin(  0.0f  ); } //	Инициализация	(Параметры: нет).
+		bool		begin					(                int   h      ){ selI2C->init(&Wire); return _begin((float)h); } //	Инициализация	(Параметр:  текущая высота).
+		bool		begin					(                float h      ){ selI2C->init(&Wire); return _begin(   h    ); } //	Инициализация	(Параметр:  текущая высота).
+		bool		begin					(TwoWire*     i, float h=0.0f ){ selI2C->init(  i  ); return _begin(   h    ); } //	Инициализация	(Параметры: объект для работы с аппаратной шиной I2C, текущая высота).
 		#endif																	//
 		#if defined(iarduino_I2C_Software_h)									//
-		bool		begin					(SoftTwoWire* i, float h=0.0f ){ selI2C->begin(  i  ); return _begin(   h    ); } //	Инициализация	(Параметры: объект для работы с программной шиной I2C, текущая высота).
+		bool		begin					(SoftTwoWire* i, float h=0.0f ){ selI2C->init(  i  ); return _begin(   h    ); } //	Инициализация	(Параметры: объект для работы с программной шиной I2C, текущая высота).
 		#endif																	//
 		bool		measurement				(uint8_t);							//	Объявляем  функцию установки точности							(Параметры: степень передискретизации - точность) // значение от 0-минимальная до 3 (для bmp180) или до 4 (для bmp280) включительно
 		bool		read					(uint8_t=1);						//	Объявляем  функцию чтения всех данных сенсора					(Параметры: цифра 1 или 2) // 1 - получить давление в мм.рт.ст., 2 - получить давление в Па

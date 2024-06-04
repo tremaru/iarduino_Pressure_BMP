@@ -1,6 +1,9 @@
 #include "iarduino_Pressure_BMP.h"																					//
 //			ФУНКЦИЯ ИНИЦИАЛИЗАЦИИ ДАТЧИКА:																			//
 bool		iarduino_Pressure_BMP::_begin(float i){																	//	Аргументы:	i - текущая высота
+			//	Инициируем работу с шиной I2C:																		//
+				selI2C->begin();																					//	Инициируем работу с выбранной шиной I2C в качестве мастера.
+			//	Определяем тип модуля:																				//
 				valID=readBytes(BMPXXX_ADDRR_ID);																	//	Читаем ID модуля из регистра BMPXXX_ADDRR_ID
 				if (valID==BMP180_ID){																				//	
 					type=180;																						//	Сохраняем тип датчика
