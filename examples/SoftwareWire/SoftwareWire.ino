@@ -10,7 +10,7 @@
 SoftTwoWire sWire(3,4);                                                             // Создаём объект программной шины I2C указав выводы которым будет назначена роль линий: SDA, SCL.
                                                                                     //
 #include <iarduino_Pressure_BMP.h>                                                  // Подключаем библиотеку iarduino_Pressure_BMP для работы с датчиками атмосферного давления BMP180 или BMP280.
-iarduino_Pressure_BMP sensor;                                                       // Объявляем объект sensor для работы с датчиком давления, используя функции и методы библиотеки iarduino_Pressure_BMP.
+iarduino_Pressure_BMP sensor;                                                       // Создаём объект sensor для работы с датчиком давления, используя функции и методы библиотеки iarduino_Pressure_BMP.
                                                                                     // Адрес модуля на шине I2C можно указать при объявлении объекта: iarduino_Pressure_BMP sensor(0x76); // По умолчанию 0x77.
 void setup(){                                                                       //
      Serial.begin(9600);                                                            // Инициируем передачу данных в монитор последовательного порта на скорости 9600 бод.
