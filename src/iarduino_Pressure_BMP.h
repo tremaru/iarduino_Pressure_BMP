@@ -1,5 +1,5 @@
 //	Библиотека для работы с датчиками атмосферного давления и температуры BMP180 и(или) BMP280. http://iarduino.ru/shop/Sensory-Datchiki/davleniya/
-//  Версия: 2.0.6
+//  Версия: 2.0.7
 //  Последнюю версию библиотеки Вы можете скачать по ссылке: http://iarduino.ru/file/227.html
 //  Подробное описание функции бибилиотеки доступно по ссылке: http://wiki.iarduino.ru/page/trema-modul-pressure-meter
 //  Библиотека является собственностью интернет магазина iarduino.ru и может свободно использоваться и распространяться!
@@ -19,7 +19,7 @@
 																				//
 #include	"iarduino_Pressure_BMP_I2C.h"										//	Подключаем библиотеку выбора реализации шины I2C.
 																				//
-#if defined(TwoWire_h) || defined(__ARDUINO_WIRE_IMPLEMENTATION__) || defined(__AVR_ATmega328__) || defined(__AVR_ATmega32U4__) || defined(__AVR_ATmega1284P__) || defined(__AVR_ATmega2560__) || defined(ESP8266) || defined(ESP32) || defined(ARDUINO_ARCH_RP2040) || defined(RENESAS_CORTEX_M4) // Если подключена библиотека Wire или платы её поддерживают...
+#if defined(TwoWire_h) || defined(__ARDUINO_WIRE_IMPLEMENTATION__) || defined(__AVR_ATmega328__) || defined(__AVR_ATmega328P__) || defined(__AVR_ATmega32U4__) || defined(__AVR_ATmega1284P__) || defined(__AVR_ATmega2560__) || defined(ESP8266) || defined(ESP32) || defined(ARDUINO_ARCH_RP2040) || defined(RENESAS_CORTEX_M4) // Если подключена библиотека Wire.h или платы её поддерживают...
 #include	<Wire.h>															//	Разрешаем использовать библиотеку Wire в данной библиотеке.
 #endif																			//
 #if defined( iarduino_I2C_Software_h )											//	Если библиотека iarduino_I2C_Software подключена в скетче...
@@ -71,7 +71,7 @@ class iarduino_Pressure_BMP{													//
 	/**	Конструктор класса **/													//
 		iarduino_Pressure_BMP				(uint8_t i=0x77){selI2C = new iarduino_I2C_Select; valAddress=i;} //									(Параметры: адрес датчика на шине I2C)
 	/**	пользовательские функции **/											//
-		#if defined(TwoWire_h) || defined(__ARDUINO_WIRE_IMPLEMENTATION__) || defined(__AVR_ATmega328__) || defined(__AVR_ATmega32U4__) || defined(__AVR_ATmega1284P__) || defined(__AVR_ATmega2560__) || defined(ESP8266) || defined(ESP32) || defined(ARDUINO_ARCH_RP2040) || defined(RENESAS_CORTEX_M4) // Если подключена библиотека Wire или платы её поддерживают...
+		#if defined(TwoWire_h) || defined(__ARDUINO_WIRE_IMPLEMENTATION__) || defined(__AVR_ATmega328__) || defined(__AVR_ATmega328P__) || defined(__AVR_ATmega32U4__) || defined(__AVR_ATmega1284P__) || defined(__AVR_ATmega2560__) || defined(ESP8266) || defined(ESP32) || defined(ARDUINO_ARCH_RP2040) || defined(RENESAS_CORTEX_M4) // Если подключена библиотека Wire.h или платы её поддерживают...
 		bool		begin					(void                         ){ selI2C->init(&Wire); return _begin(  0.0f  ); } //	Инициализация	(Параметры: нет).
 		bool		begin					(                int   h      ){ selI2C->init(&Wire); return _begin((float)h); } //	Инициализация	(Параметр:  текущая высота).
 		bool		begin					(                float h      ){ selI2C->init(&Wire); return _begin(   h    ); } //	Инициализация	(Параметр:  текущая высота).
